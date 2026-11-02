@@ -8,6 +8,31 @@
         "scripts/serve.py"
       ],
       "port": 8737
+    },
+    {
+      "name": "site-parents",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "scripts/serve.py",
+        "site-parents",
+        "8738"
+      ],
+      "port": 8738
+    },
+    {
+      "name": "nos-fiches",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "--prefix",
+        "nos-fiches",
+        "run",
+        "dev",
+        "--",
+        "--port",
+        "5174",
+        "--strictPort"
+      ],
+      "port": 5174
     }
   ]
 }
