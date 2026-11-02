@@ -23,7 +23,7 @@ npm run sync-data    # copy ../site-parents/data.json and img/ into public/
 
 `public/data.json` and `public/img/` are generated, never edited by hand. To refresh them after new deliveries, run the chain in the parent folder (`../scripts/prefetch.mjs`, `build-data.mjs`, `build-parents.mjs`), then `npm run sync-data`.
 
-Notes (comment, hidden recipe) go through `NotesRepository`; today they stay in the browser. The shared database plan is in [docs/database.md](docs/database.md).
+Notes (comment, hidden recipe) go through `NotesRepository`; today they stay in the browser. That is the intended setup; [docs/database.md](docs/database.md) only describes how to go online later (shared notes on every device), if ever wanted.
 
 ## Layout
 

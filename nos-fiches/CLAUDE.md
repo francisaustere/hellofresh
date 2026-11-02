@@ -1,6 +1,6 @@
 # Nos fiches — agent notes
 
-Read README.md first, then docs/database.md for the next big task (shared notes).
+Read README.md first. The site is local on purpose: recipes from public/data.json, notes in localStorage. docs/database.md is only an indicative plan in case the parents later want it online on all their devices; do not start it unless asked.
 
 ## Rules
 

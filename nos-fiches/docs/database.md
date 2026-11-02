@@ -1,6 +1,10 @@
 # Database: recipe notes
 
-Status (2026-11-02): **not wired yet**. The site runs on `LocalNotesRepository` (localStorage, one browser only). This document is the plan for the agent that takes over.
+Status (2026-11-02): **indicative only, not planned.** Decision: the site stays local. Recipes come from `public/data.json`, notes stay in the browser (`LocalNotesRepository`, localStorage). Don't build any of this unless François or his father asks to put the site online and share notes between devices.
+
+This document is the plan for that day: going online so the same notes show on the computer and the phone. That needs both a hosted database (below) and a hosted site (Netlify or Cloudflare Pages, static build of `nos-fiches/`); a database alone does not help while the site only runs with `npm run dev` on one computer.
+
+Moving later loses nothing: the localStorage notes of that browser can be imported like the artifact notes (see "Migrating the existing notes").
 
 ## What needs storing
 
@@ -15,6 +19,10 @@ The contract is `src/core/notes/NotesRepository.ts`: `subscribe(onChange, onErro
 ## Recommended backend: Supabase
 
 Postgres with row-level security, a realtime channel for `subscribe`, email magic-link auth, a free tier and an EU region (Frankfurt). Firebase Firestore would also fit (its `onSnapshot` is what the artifact used), but Supabase keeps the data in plain SQL and is easier to export.
+
+Cost (check supabase.com/pricing, it changes): the free plan is far above what two people need (500 MB database, tens of thousands of users). **Free projects pause after about a week without activity**; the notes then fail to load until someone restores the project in the dashboard. Prevent it with a scheduled GitHub Actions workflow that queries the database every few days, or pick Firebase Firestore, whose free plan does not pause. The paid plan (about 25 $/month) is not worth it here.
+
+Supabase can also run locally (`supabase start`, needs Docker) for development, but that does not share notes between devices, so it is not an option for the parents themselves.
 
 Schema: `supabase/migrations/0001_recipe_notes.sql`.
 
