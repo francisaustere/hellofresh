@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Mes fiches → Carrefour",
+  "version": "0.2.0",
+  "description": "Remplit ton panier carrefour.fr avec la liste de courses de Mes fiches HelloFresh.",
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.carrefour.fr/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

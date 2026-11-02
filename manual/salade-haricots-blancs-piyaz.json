@@ -1,0 +1,73 @@
+{
+  "id": "manuel-salade-haricots-blancs-piyaz",
+  "name": "Salade de haricots blancs façon Piyaz turque",
+  "headline": "avec du chèvre frais & des croûtons",
+  "source": "Fiche papier, semaine 2022-W15",
+  "prepTime": 25,
+  "totalTime": 35,
+  "difficulty": 1,
+  "kcal": 589,
+  "tags": ["Faible en calories", "Rapide", "Végétarien", "Épicé"],
+  "allergens": ["Sésame", "Lait (contient du lactose)", "Gluten", "Blé"],
+  "utensils": ["Bol", "Passoire", "Poêle", "Saladier"],
+  "servings": 2,
+  "ingredients": [
+    { "name": "Oignon rouge", "amount": 0.25, "unit": "pièce(s)" },
+    { "name": "Citron jaune", "amount": 1, "unit": "pièce(s)" },
+    { "name": "Concombre", "amount": 1, "unit": "pièce(s)" },
+    { "name": "Piment rouge", "amount": 0.33, "unit": "pièce(s)" },
+    { "name": "Aneth et persil plat", "amount": 10, "unit": "g" },
+    { "name": "Petit pain tradition", "amount": 1, "unit": "pièce(s)" },
+    { "name": "Gousse d'ail", "amount": 1, "unit": "pièce(s)" },
+    { "name": "Yaourt à la grecque", "amount": 50, "unit": "g" },
+    { "name": "Zaatar", "amount": 2, "unit": "cc" },
+    { "name": "Haricots blancs", "amount": 1.5, "unit": "boîte(s)" },
+    { "name": "Fromage de chèvre frais", "amount": 60, "unit": "g" },
+    { "name": "Huile d'olive", "amount": 4, "unit": "cs", "shipped": false },
+    { "name": "Poivre et sel", "amount": null, "unit": "selon le goût", "shipped": false }
+  ],
+  "steps": [
+    {
+      "items": [
+        "Veillez à bien respecter les quantités indiquées à gauche pour préparer votre recette !",
+        "Coupez l'oignon en très fines demi-lunes. Placez-les dans un bol. Pressez le jus d'½ citron par personne au-dessus et mélangez.",
+        "Coupez le concombre en demi-lunes de 5 mm d'épaisseur. Épépinez et ciselez finement le piment rouge (ça pique ! Dosez-le selon votre goût).",
+        "Effeuillez et ciselez les herbes. Si vous n'aimez pas l'aneth, mettez seulement du persil !"
+      ],
+      "tips": ["LE SAVIEZ-VOUS ? La marinade au jus de citron permet d'adoucir la forte saveur de l'oignon cru."]
+    },
+    {
+      "items": [
+        "Coupez le petit pain en croûtons de 1 cm.",
+        "Dans une poêle à feu moyen-vif, faites chauffer un généreux filet d'huile d'olive. Faites-y revenir la gousse d'ail non épluchée et les croûtons 4-5 min ou jusqu'à ce qu'ils soient croustillants et dorés. Salez et poivrez.",
+        "Ôtez la gousse d'ail après cuisson."
+      ],
+      "tips": []
+    },
+    {
+      "items": [
+        "Dans un saladier, préparez la sauce en mélangeant le yaourt, un filet d'huile d'olive et 1 cc de zaatar par personne. Salez et poivrez.",
+        "Rincez les haricots blancs et égouttez-les bien dans une passoire.",
+        "Ajoutez-les au saladier ainsi que le concombre, le piment, la moitié des herbes et quelques morceaux d'oignon rouge (selon votre goût) avec leur jus de citron.",
+        "Mélangez bien et ajustez l'assaisonnement en sel et en poivre."
+      ],
+      "tips": []
+    },
+    {
+      "items": [
+        "Servez la salade dans les assiettes. Émiettez le chèvre frais par-dessus à la main et saupoudrez de croûtons.",
+        "Parsemez avec les herbes fraîches restantes."
+      ],
+      "tips": []
+    }
+  ],
+  "images": {
+    "hero": { "file": "piyaz-recto.jpg", "crop": [0, 40, 1190, 1520], "rotate": 270 },
+    "steps": [
+      { "file": "piyaz-verso.jpg", "crop": [724, 44, 600, 274] },
+      { "file": "piyaz-verso.jpg", "crop": [1360, 56, 572, 276] },
+      { "file": "piyaz-verso.jpg", "crop": [720, 790, 606, 284] },
+      { "file": "piyaz-verso.jpg", "crop": [1364, 790, 580, 278] }
+    ]
+  }
+}

@@ -1,0 +1,230 @@
+{
+  "id": "manuel-soupe-brocoli-ricotta-miel",
+  "name": "Soupe de brocoli & tartines ricotta-miel",
+  "headline": "avec un œuf mollet & des pistaches",
+  "source": "Fiche papier, semaine 10 2023",
+  "prepTime": 40,
+  "totalTime": 55,
+  "difficulty": 1,
+  "kcal": 779,
+  "tags": [
+    "Végétarien"
+  ],
+  "allergens": [
+    "Fruits à coque",
+    "Sésame",
+    "Lait (contient du lactose)",
+    "Gluten",
+    "Blé",
+    "Orge",
+    "Seigle",
+    "Pistaches"
+  ],
+  "utensils": [
+    "Casserole",
+    "Casserole avec couvercle",
+    "Mixeur plongeant",
+    "Râpe",
+    "Saladier"
+  ],
+  "servings": 2,
+  "ingredients": [
+    {
+      "name": "Brocoli",
+      "amount": 500,
+      "unit": "g"
+    },
+    {
+      "name": "Oignon jaune",
+      "amount": 1,
+      "unit": "pièce(s)"
+    },
+    {
+      "name": "Gousse d'ail",
+      "amount": 1,
+      "unit": "pièce(s)"
+    },
+    {
+      "name": "Ricotta",
+      "amount": 150,
+      "unit": "g"
+    },
+    {
+      "name": "Ciboulette",
+      "amount": 3,
+      "unit": "g"
+    },
+    {
+      "name": "Pistaches décortiquées",
+      "amount": 20,
+      "unit": "g"
+    },
+    {
+      "name": "Tomates semi-séchées",
+      "amount": 60,
+      "unit": "g"
+    },
+    {
+      "name": "Petit pain au pavot",
+      "amount": 2,
+      "unit": "pièce(s)"
+    },
+    {
+      "name": "Huile d'olive",
+      "amount": 1,
+      "unit": "cs",
+      "shipped": false
+    },
+    {
+      "name": "Bouillon de légumes",
+      "amount": 500,
+      "unit": "ml",
+      "shipped": false
+    },
+    {
+      "name": "Beurre",
+      "amount": 2,
+      "unit": "cs",
+      "shipped": false
+    },
+    {
+      "name": "Œuf",
+      "amount": 2,
+      "unit": "pièce(s)",
+      "shipped": false
+    },
+    {
+      "name": "Miel",
+      "amount": 0.5,
+      "unit": "cc",
+      "shipped": false
+    },
+    {
+      "name": "Poivre et sel",
+      "amount": null,
+      "unit": "selon le goût",
+      "shipped": false
+    }
+  ],
+  "steps": [
+    {
+      "items": [
+        "Veillez à bien respecter les quantités indiquées à gauche pour préparer votre recette !",
+        "Si vous n'avez pas de grille-pain, préchauffez le four sur grill à 180°C. Préparez le bouillon avec de l'eau chaude.",
+        "Coupez les bouquets de brocoli en fleurettes et les tiges en morceaux.",
+        "Ciselez l'oignon et l'ail."
+      ],
+      "tips": []
+    },
+    {
+      "items": [
+        "Faites chauffer un filet d'huile d'olive dans une casserole à feu moyen. Faites-y dorer l'oignon 2-3 min. Ajoutez le brocoli et l'ail et faites-les cuire 2-3 min.",
+        "Ajoutez le bouillon, couvrez et laissez cuire 20 min à feu moyen-doux. Mixez ensuite au mixeur plongeant jusqu'à obtenir un velouté lisse.",
+        "Ajoutez le beurre, ⅓ de la ricotta, du sel, du poivre et mixez à nouveau. Rajoutez un peu d'eau ou de bouillon pour fluidifier la soupe."
+      ],
+      "tips": [
+        "CONSEIL : Vous pouvez passer la soupe à la passoire fine pour ôter les morceaux restants."
+      ]
+    },
+    {
+      "items": [
+        "Pendant ce temps, faites chauffer une casserole d'eau salée jusqu'à arriver à faible ébullition.",
+        "Plongez délicatement les œufs dans l'eau avec une cuillère et faites-les cuire 7-8 min.",
+        "Passez-les ensuite sous l'eau froide. Écalez-les une fois refroidis."
+      ],
+      "tips": []
+    },
+    {
+      "items": [
+        "Ciselez la ciboulette. Concassez les pistaches (vous pouvez en garder quelques-unes de côté). Coupez les tomates semi-séchées en morceaux.",
+        "Coupez les petits pains en deux et mettez-les à griller au four ou au grille-pain 5-7 min.",
+        "Dans un saladier, mélangez le reste de la ricotta, la moitié de la ciboulette, les pistaches, le miel, les tomates séchées et un filet d'huile d'olive. Salez et poivrez abondamment."
+      ],
+      "tips": []
+    },
+    {
+      "items": [
+        "Répartissez la préparation à la ricotta sur les morceaux de pain.",
+        "Salez, poivrez et arrosez d'un filet d'huile d'olive.",
+        "Si vous avez mis des pistaches de côté, râpez-les sur les tartines."
+      ],
+      "tips": []
+    },
+    {
+      "items": [
+        "Servez la soupe dans des assiettes creuses, ajoutez l'œuf mollet et le reste de ciboulette, puis salez et poivrez selon votre goût.",
+        "Présentez les tartines en accompagnement."
+      ],
+      "tips": [
+        "LE SAVIEZ-VOUS ? Le brocoli est un légume très ancien, originaire d'Italie. Les Romains le cultivaient au 1er siècle de notre ère et le cuisinaient à l'huile d'olive avec du vin blanc et de l'ail."
+      ]
+    }
+  ],
+  "images": {
+    "hero": {
+      "file": "brocoli-recto.jpg",
+      "crop": [
+        64,
+        234,
+        1500,
+        1100
+      ]
+    },
+    "steps": [
+      {
+        "file": "brocoli-verso.jpg",
+        "crop": [
+          585,
+          56,
+          396,
+          214
+        ]
+      },
+      {
+        "file": "brocoli-verso.jpg",
+        "crop": [
+          1070,
+          56,
+          396,
+          212
+        ]
+      },
+      {
+        "file": "brocoli-verso.jpg",
+        "crop": [
+          1555,
+          54,
+          388,
+          210
+        ]
+      },
+      {
+        "file": "brocoli-verso.jpg",
+        "crop": [
+          585,
+          820,
+          400,
+          214
+        ]
+      },
+      {
+        "file": "brocoli-verso.jpg",
+        "crop": [
+          1075,
+          816,
+          398,
+          214
+        ]
+      },
+      {
+        "file": "brocoli-verso.jpg",
+        "crop": [
+          1562,
+          810,
+          394,
+          218
+        ]
+      }
+    ]
+  }
+}
