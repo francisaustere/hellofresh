@@ -6,60 +6,131 @@ Ce document a deux parties : une pour papa (installer et lancer le site), une po
 
 ## 1. Pour papa : installer le site sur ton ordinateur
 
-Tu n'as à le faire qu'une fois. Ensuite, pour ouvrir le site, il suffit de la partie « Lancer le site ».
+### En deux mots
 
-Le plus simple : demande à ton agent Claude
-> « Clone la branche papamaman de https://github.com/francisaustere/hellofresh et lance le site avec npm run dev. »
+Le site de recettes n'est pas sur Internet : il tourne **sur ton ordinateur**. Pour ça, il faut une fois pour toutes installer deux petits programmes, puis copier le site depuis Internet sur ton ordinateur. Ensuite, chaque fois que tu veux t'en servir, tu tapes une commande et le site s'ouvre dans ton navigateur (Safari, Chrome…), comme un site normal.
 
-Il saura faire toutes les étapes ci-dessous. Si tu préfères le faire toi-même :
+### La façon la plus simple : demander à Claude
 
-### Ce qu'il faut sur l'ordinateur
+Ouvre Claude Code et écris-lui exactement ceci :
 
-1. **Node.js, version 22 ou plus récente.** Télécharge la version « LTS » sur https://nodejs.org et installe-la comme un programme normal.
-2. **Git.**
-   - Sur Mac : ouvre le Terminal et tape `git --version`. S'il n'est pas installé, le Mac propose de l'installer : accepte.
-   - Sur Windows : télécharge-le sur https://git-scm.com et installe-le avec les options proposées.
+> « Installe et lance le site de recettes de la branche papamaman de https://github.com/francisaustere/hellofresh. Lis le fichier HANDOFF.md et guide-moi pas à pas. »
 
-### Récupérer le site (une seule fois)
+Il fera les étapes à ta place. Quand il te demande quelque chose (autoriser une action, taper ton mot de passe de l'ordinateur pour installer un programme), c'est normal : lis ce qu'il dit et réponds. En cas de doute, demande-lui « qu'est-ce que ça fait ? » avant d'accepter.
 
-Ouvre le Terminal (Mac) ou « Git Bash » (Windows), puis tape :
+### Si tu veux le faire toi-même, pas à pas
+
+Quelques mots qui reviennent :
+
+- **Le Terminal** : une fenêtre où l'on tape des commandes au lieu de cliquer. Tu écris une ligne, tu appuies sur la touche **Entrée**, l'ordinateur l'exécute et affiche du texte. C'est normal qu'il y ait beaucoup de texte : seules les lignes avec le mot « error » sont un problème.
+- **Une commande** : une ligne de texte à taper dans le Terminal. Le plus sûr est de la **copier-coller** depuis ce document plutôt que de la retaper.
+- **Node.js** : un programme qui fait tourner le site sur ton ordinateur. On l'installe une fois, puis on l'oublie.
+- **Git** : un programme qui copie le site depuis Internet et qui récupère ensuite les nouvelles recettes.
+
+#### Étape 1 : ouvrir le Terminal
+
+- **Sur Mac** : appuie en même temps sur **Cmd + Espace**, tape `Terminal`, puis appuie sur **Entrée**. Une fenêtre avec du texte s'ouvre.
+- **Sur Windows** : ce sera « Git Bash », un programme installé à l'étape 3. Fais d'abord les étapes 2 et 3.
+
+#### Étape 2 : installer Node.js (une seule fois)
+
+1. Va sur https://nodejs.org avec ton navigateur.
+2. Clique sur le gros bouton de téléchargement marqué **LTS** (la version stable).
+3. Ouvre le fichier téléchargé et clique sur **Continuer** / **Suivant** jusqu'à la fin, sans rien changer. L'ordinateur peut te demander ton mot de passe : c'est celui que tu tapes pour allumer ta session.
+4. Pour vérifier : dans le Terminal, colle cette commande et appuie sur Entrée :
+
+   ```bash
+   node --version
+   ```
+
+   Tu dois voir un numéro qui commence par **v22** ou plus (par exemple `v22.12.0`). Si tu vois « command not found », ferme le Terminal, rouvre-le et réessaie.
+
+#### Étape 3 : installer Git (une seule fois)
+
+- **Sur Mac** : dans le Terminal, colle `git --version` et appuie sur Entrée. Si une fenêtre propose d'installer des « outils de développement en ligne de commande », clique sur **Installer** et attends la fin (quelques minutes). Si un numéro s'affiche, Git est déjà là.
+- **Sur Windows** : va sur https://git-scm.com, clique sur **Download for Windows**, ouvre le fichier et clique sur **Next** jusqu'à la fin sans rien changer. Ensuite, ouvre le programme **Git Bash** (menu Démarrer) : c'est ton Terminal pour la suite.
+
+#### Étape 4 : copier le site sur ton ordinateur (une seule fois)
+
+Dans le Terminal, colle cette commande (c'est une seule longue ligne) et appuie sur Entrée :
 
 ```bash
 git clone --branch papamaman --single-branch https://github.com/francisaustere/hellofresh.git nos-fiches-hellofresh
 ```
 
-Le téléchargement fait environ 100 Mo (les photos des recettes). Un dossier `nos-fiches-hellofresh` est créé.
+Ça télécharge environ 100 Mo (surtout les photos des recettes) et crée un dossier **nos-fiches-hellofresh** dans ton dossier personnel. Attends que le texte s'arrête et que tu puisses de nouveau taper.
 
-### Lancer le site
+#### Étape 5 : ouvrir le site
+
+Colle ces deux commandes, l'une après l'autre (Entrée après chacune) :
 
 ```bash
 cd nos-fiches-hellofresh
+```
+
+```bash
 npm run dev
 ```
 
-La première fois, l'installation prend une ou deux minutes. Le site s'ouvre ensuite tout seul dans le navigateur, à l'adresse http://localhost:5173.
+La première commande « entre » dans le dossier du site. La deuxième le démarre. **La première fois, attends une ou deux minutes** : il installe ce dont il a besoin. Ensuite le site s'ouvre tout seul dans ton navigateur. S'il ne s'ouvre pas, tape à la main dans la barre d'adresse du navigateur : **http://localhost:5173**
 
-Pour l'arrêter : clique dans le Terminal et appuie sur **Ctrl + C**. Tant que le Terminal tourne, le site reste ouvert.
+**Important : ne ferme pas la fenêtre du Terminal tant que tu utilises le site.** Le Terminal fait tourner le site ; si tu le fermes, la page arrête de marcher. Tu peux le réduire (le mettre de côté) sans problème.
 
-### Récupérer les nouvelles recettes
+#### Étape 6 : fermer le site
 
-Quand François en ajoute :
+Quand tu as fini : clique dans la fenêtre du Terminal, appuie en même temps sur **Ctrl + C**, puis ferme la fenêtre.
+
+### Les fois suivantes
+
+Plus besoin des étapes 2 à 4. Ouvre le Terminal, puis :
 
 ```bash
 cd nos-fiches-hellofresh
+```
+
+```bash
+npm run dev
+```
+
+### Quand François ajoute de nouvelles recettes
+
+Ouvre le Terminal, puis colle une par une :
+
+```bash
+cd nos-fiches-hellofresh
+```
+
+```bash
 git pull
+```
+
+```bash
 npm run dev
 ```
+
+`git pull` va chercher les nouveautés sur Internet. Si tu vois « Already up to date », c'est qu'il n'y avait rien de nouveau.
 
 ### Bon à savoir
 
-- **Tes mots sur les plats** (« Notre mot sur ce plat ») et les fiches retirées sont gardés **dans le navigateur de cet ordinateur**. Ils ne passent pas sur le téléphone, et ils disparaissent si on efface les données du navigateur. Utilise toujours le même navigateur.
-- La liste de courses et le nombre de personnes sont aussi gardés dans le navigateur.
-- Le site ne marche que sur l'ordinateur où il est lancé. Pour l'avoir sur le téléphone aussi, il faudrait le mettre en ligne : voir la partie 2.
+- **Tes mots sur les plats** (« Notre mot sur ce plat ») et les fiches que tu retires sont gardés **dans ton navigateur, sur cet ordinateur**. Ils ne vont pas sur le téléphone. Utilise toujours le même navigateur, et n'efface pas son historique « avec les données des sites », sinon ils disparaissent.
+- La liste de courses et le nombre de personnes sont gardés de la même façon.
+- Le site ne marche que sur cet ordinateur, et seulement quand le Terminal le fait tourner. Pour l'avoir aussi sur le téléphone, il faudrait le mettre en ligne : demande à François.
+- Si quelque chose bloque, copie le message affiché dans le Terminal et donne-le à Claude ou à François.
 
 ---
 
 ## 2. Pour l'agent : où en est le projet (2 novembre 2026)
+
+### Comment parler à papa
+
+Papa n'est pas informaticien : il ne connaît ni le Terminal, ni Node, ni npm, ni Git, ni Vue. Chaque fois que tu lui demandes de faire quelque chose de technique :
+
+- **Une étape à la fois.** Dis-lui exactement quoi faire (où cliquer, quoi coller, sur quelle touche appuyer), attends qu'il te dise que c'est fait, puis passe à la suivante.
+- **Explique en une phrase simple** à quoi sert l'étape avant de la donner (« ça installe le programme qui fait tourner le site »).
+- **Dis-lui ce qu'il va voir** et ce qui est normal (beaucoup de texte, une demande de mot de passe de l'ordinateur), et ce qui serait un problème.
+- **Pas de jargon** : si un mot technique est inévitable, explique-le. Parle en français, tutoie-le.
+- Fais toi-même tout ce que tu peux faire (installer, lancer, vérifier) et ne lui demande que ce qu'il est le seul à pouvoir faire (cliquer sur un installeur, taper son mot de passe, autoriser une action). Explique-lui chaque autorisation que tu demandes.
+- La partie 1 de ce document est le parcours de référence : suis-la.
 
 ### Le dépôt
 
