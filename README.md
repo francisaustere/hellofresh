@@ -2,6 +2,8 @@
 
 Le site de recettes de papa et maman : toutes les recettes déjà commandées, la liste de courses, le mode cuisine pas à pas.
 
+Installation pas à pas et état du projet : voir [HANDOFF.md](HANDOFF.md).
+
 ## Lancer le site
 
 Il faut Node.js 22 ou plus récent (https://nodejs.org, version « LTS »).
