@@ -1,16 +1,21 @@
 {
-  "name": "mes-recettes-hellofresh",
+  "name": "nos-fiches-hellofresh",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "private": true,
   "type": "module",
-  "private": "true",
+  "description": "Le site de recettes HelloFresh de papa et maman. Lancer : npm run dev",
+  "workspaces": [
+    "nos-fiches"
+  ],
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "predev": "npm install --no-audit --no-fund",
+    "dev": "npm run dev -w nos-fiches -- --open",
+    "build": "npm run build -w nos-fiches",
+    "preview": "npm run preview -w nos-fiches"
+  },
   "dependencies": {
     "sharp": "^0.34.5"
   }
