@@ -16,6 +16,7 @@ export type UsePreferencesReturn = {
   removeFromCart: (id: string) => void,
   pruneCart: (exists: (id: string) => boolean) => void,
   setChecked: (key: string, isChecked: boolean) => void,
+  clearCart: () => () => void,
 };
 
 export function usePreferences(): UsePreferencesReturn {
@@ -38,5 +39,16 @@ export function usePreferences(): UsePreferencesReturn {
     checked.value = { ...checked.value, [key]: isChecked };
   };
 
-  return { servings, cart, checked, isInCart, toggleCart, removeFromCart, pruneCart, setChecked };
+  /** Empties the basket and its ticks; returns a function that puts them back (for the undo toast). */
+  const clearCart = (): (() => void) => {
+    const previous = { cart: cart.value, checked: checked.value };
+    cart.value = [];
+    checked.value = {};
+    return () => {
+      cart.value = previous.cart;
+      checked.value = previous.checked;
+    };
+  };
+
+  return { servings, cart, checked, isInCart, toggleCart, removeFromCart, pruneCart, setChecked, clearCart };
 }

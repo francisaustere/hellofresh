@@ -1,0 +1,8 @@
+# Keep Aider's repo map small: generated data, photos and François's own tooling.
+nos-fiches/public/
+site/
+site-parents/
+parents/
+manual/
+extension/
+recipes.txt

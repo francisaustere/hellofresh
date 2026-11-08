@@ -1,6 +1,10 @@
 import { assign, fromPromise, setup } from "xstate";
 import RecipeCatalog from "@/engine/RecipeCatalog";
 import { RecipeDataSchema } from "@/engine/recipe.schema";
+import type { Season } from "@/engine/season.utils";
+
+/** Gallery order: most made first (delivered + cooked again), or best "note perso" first. */
+export type GallerySort = "made" | "rated";
 
 export type AppContext = {
   catalog: RecipeCatalog | null,
@@ -8,6 +12,8 @@ export type AppContext = {
   cookStep: number,
   query: string,
   tag: string | null,
+  season: Season | null,
+  sort: GallerySort,
 };
 
 export type AppEvent =
@@ -19,7 +25,9 @@ export type AppEvent =
   | { type: "OPEN_SHEET" }
   | { type: "CLOSE_SHEET" }
   | { type: "SET_QUERY", query: string }
-  | { type: "SET_TAG", tag: string | null };
+  | { type: "SET_TAG", tag: string | null }
+  | { type: "SET_SEASON", season: Season | null }
+  | { type: "SET_SORT", sort: GallerySort };
 
 const DATA_URL = `${import.meta.env.BASE_URL}data.json`;
 
@@ -62,6 +70,8 @@ export const appMachine = setup({
     cookStep: 0,
     query: "",
     tag: null,
+    season: null,
+    sort: "made",
   },
   initial: "loading",
   states: {
@@ -101,6 +111,12 @@ export const appMachine = setup({
             },
             SET_TAG: {
               actions: assign({ tag: ({ event }) => event.tag }),
+            },
+            SET_SEASON: {
+              actions: assign({ season: ({ event }) => event.season }),
+            },
+            SET_SORT: {
+              actions: assign({ sort: ({ event }) => event.sort }),
             },
           },
           states: {

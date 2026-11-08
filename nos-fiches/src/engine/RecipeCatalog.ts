@@ -1,5 +1,6 @@
 import type { Recipe, RecipeData } from "@/engine/recipe.schema";
 import { ingredientKey, shippedKeys } from "@/engine/ingredient.utils";
+import { recipeSeason, type Season } from "@/engine/season.utils";
 
 export type Overlap = {
   recipe: Recipe,
@@ -27,6 +28,7 @@ export default class RecipeCatalog {
   private readonly _keys = new Map<string, Set<string>>();
   private readonly _rarity = new Map<string, number>();
   private readonly _labels = new Map<string, string>();
+  private readonly _seasons = new Map<string, Season | null>();
 
   constructor(data: RecipeData) {
     this.recipes = data.recipes;
@@ -37,6 +39,7 @@ export default class RecipeCatalog {
     for (const recipe of data.recipes) {
       const keys = shippedKeys(recipe);
       this._keys.set(recipe.id, keys);
+      this._seasons.set(recipe.id, recipeSeason(recipe));
       for (const key of keys) frequency.set(key, (frequency.get(key) ?? 0) + 1);
       for (const ingredient of recipe.ingredients) {
         const key = ingredientKey(ingredient.name);
@@ -53,6 +56,11 @@ export default class RecipeCatalog {
 
   public has(id: string): boolean {
     return this._byId.has(id);
+  }
+
+  /** Season read from the fresh produce; `null` for a dish that works all year. */
+  public seasonOf(recipe: Recipe): Season | null {
+    return this._seasons.get(recipe.id) ?? null;
   }
 
   public keysOf(recipe: Recipe): Set<string> {

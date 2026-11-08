@@ -1,0 +1,7 @@
+# Aider has no memory between sessions: these files are loaded read-only at every start.
+# See HANDOFF.md, "Ta mémoire d'une session à l'autre". To update the memory: /add MEMOIRE.md
+read:
+  - CLAUDE.md
+  - nos-fiches/CLAUDE.md
+  - HANDOFF.md
+  - MEMOIRE.md

@@ -3,6 +3,10 @@ import { RecipeNoteSchema, type NotesMap, type RecipeNote } from "@/core/notes/R
 
 const STORAGE_KEY = "notes";
 
+// Written by the Aider version papa ran in early November 2026: stars and counters are imported once, the rest dropped.
+const LEGACY_FIELDS = { "recipe-star-overrides": "rating", "recipe-cooked-overrides": "cooked" } as const;
+const LEGACY_LEFTOVERS = ["last-opened-recipe-id", "seasonIndex", "gallery-sort-criteria"];
+
 /** Notes kept in this browser's localStorage. Syncs between tabs, not between devices. */
 export default class LocalNotesRepository implements NotesRepository {
 
@@ -13,6 +17,7 @@ export default class LocalNotesRepository implements NotesRepository {
       if (event.key === STORAGE_KEY) onChange(this._read());
     };
     window.addEventListener("storage", onStorage);
+    this._importLegacy();
     onChange(this._read());
     return () => window.removeEventListener("storage", onStorage);
   }
@@ -24,6 +29,32 @@ export default class LocalNotesRepository implements NotesRepository {
     } catch (error) {
       console.error("[LocalNotesRepository] save failed", error);
       throw error;
+    }
+  }
+
+  private _importLegacy(): void {
+    const notes = this._read();
+    let isChanged = false;
+    for (const [key, field] of Object.entries(LEGACY_FIELDS)) {
+      const raw = localStorage.getItem(key);
+      if (raw === null) continue;
+      try {
+        const values: unknown = JSON.parse(raw);
+        for (const [id, value] of Object.entries(values ?? {})) {
+          // 0 meant "cleared" in that version
+          if (typeof value !== "number" || value <= 0 || notes[id]?.[field] !== undefined) continue;
+          notes[id] = { ...notes[id], [field]: value, updatedAt: new Date().toISOString() };
+          isChanged = true;
+        }
+      } catch (error) {
+        console.warn(`[LocalNotesRepository] unreadable ${key}, skipped`, error);
+      }
+    }
+    try {
+      if (isChanged) localStorage.setItem(STORAGE_KEY, JSON.stringify(notes));
+      for (const key of [...Object.keys(LEGACY_FIELDS), ...LEGACY_LEFTOVERS]) localStorage.removeItem(key);
+    } catch (error) {
+      console.error("[LocalNotesRepository] legacy import failed", error);
     }
   }
 

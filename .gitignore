@@ -5,3 +5,6 @@ dist/
 .env
 .env.local
 *.tsbuildinfo
+.aider*
+!.aider.conf.yml
+!.aiderignore

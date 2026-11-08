@@ -44,6 +44,7 @@ export type UseNotesReturn = {
   noteOf: (id: string) => Partial<RecipeNote>,
   isHidden: (id: string) => boolean,
   saveNote: (id: string, patch: RecipeNotePatch) => void,
+  addCooked: (id: string, delta: number) => void,
 };
 
 export function useNotes(): UseNotesReturn {
@@ -71,11 +72,18 @@ export function useNotes(): UseNotesReturn {
     });
   };
 
+  /** Moves the "reproduite" counter up or down, never below zero. */
+  const addCooked = (id: string, delta: number): void => {
+    const cooked = Math.max(0, (noteOf(id).cooked ?? 0) + delta);
+    if (cooked !== (noteOf(id).cooked ?? 0)) saveNote(id, { cooked });
+  };
+
   return {
     notes,
     isShared: computed(() => repository.isShared),
     noteOf,
     isHidden,
     saveNote,
+    addCooked,
   };
 }

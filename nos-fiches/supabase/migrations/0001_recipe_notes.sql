@@ -20,6 +20,7 @@ create table public.recipe_notes (
   comment text,
   hidden boolean not null default false,
   rating smallint check (rating between 0 and 5),
+  cooked integer check (cooked >= 0),
   updated_at timestamptz not null default now(),
   updated_by uuid references auth.users (id) default auth.uid(),
   primary key (household_id, recipe_id)

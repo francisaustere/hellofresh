@@ -13,13 +13,19 @@
   },
   "gallery": {
     "title": "{count} recettes déjà cuisinées",
-    "intro": "Les plus commandées sont en tête : plus une recette est revenue dans vos box, plus elle a d'étoiles. Le badge de couleur dit si le plat est bon pour le cœur tel quel, ou ce qu'il faut remplacer.",
+    "intro": "Les plus réalisées sont en tête : celles qui sont le plus revenues dans vos box ou que vous avez refaites à la maison. Les étoiles viennent de vos commandes, jusqu'à ce que vous donniez votre note perso sur la fiche. Le badge de couleur dit si le plat est bon pour le cœur tel quel, ou ce qu'il faut remplacer.",
     "filtersLabel": "Filtrer les fiches",
     "filter": {
       "all": "Toutes",
       "favourites": "Les préférées ({count})",
       "heart": "Bon pour le cœur ({count})",
       "adjust": "À ajuster ({count})"
+    },
+    "seasonLabel": "Saison",
+    "sortLabel": "Trier",
+    "sort": {
+      "made": "Les plus réalisées",
+      "rated": "Les mieux notées"
     },
     "count": "{count} recette | {count} recettes",
     "forQuery": " pour « {query} »",
@@ -35,10 +41,29 @@
     "disclaimer": "Ces conseils sont généraux. Ils ne remplacent pas ceux du cardiologue ou d'un diététicien, à qui on peut montrer une fiche en cas de doute."
   },
   "orders": {
-    "starsLabel": "{stars} étoiles sur 5",
+    "starsLabel": "{stars} étoiles sur 5, d'après vos commandes",
     "count": "commandée {count} fois | commandée {count} fois",
     "starOn": "★",
-    "starOff": "☆"
+    "starOff": "☆",
+    "cooked": "reproduite {count} fois | reproduite {count} fois",
+    "cookedLess": "Enlever une fois à « reproduite »",
+    "cookedMore": "Ajouter une fois à « reproduite »",
+    "starsPersonal": "Note perso : {stars} étoiles sur 5"
+  },
+  "rating": {
+    "label": "Note perso",
+    "star": "Donner {count} étoile | Donner {count} étoiles",
+    "clear": "Revenir aux étoiles d'après vos commandes",
+    "fromOrders": "D'après vos commandes. Touchez une étoile pour donner la vôtre."
+  },
+  "season": {
+    "label": "saison",
+    "all": "Toutes saisons",
+    "now": "{season} (en ce moment)",
+    "spring": "Printemps",
+    "summer": "Été",
+    "autumn": "Automne",
+    "winter": "Hiver"
   },
   "heart": {
     "title": "Pour le cœur",
@@ -53,6 +78,7 @@
     "why": "{why}."
   },
   "note": {
+    "cooked": "Reproduite à la maison : {count} fois | Reproduite à la maison : {count} fois",
     "label": "Notre mot sur ce plat",
     "placeholder": "Pour la prochaine fois : moitié moins de sauce soja, plus de citron…",
     "shared": "Enregistré, et visible sur le téléphone comme sur l'ordinateur.",
@@ -126,7 +152,26 @@
     "checkPantry": "À vérifier dans le placard",
     "suggestions": "Pour compléter sans racheter grand-chose",
     "inRecipes": "dans {count} recettes",
-    "empty": "Ajoutez des fiches avec « Ajouter aux courses ». Leurs ingrédients s'additionnent ici, et le site vous propose des recettes qui réutilisent les mêmes produits."
+    "empty": "Ajoutez des fiches avec « Ajouter aux courses ». Leurs ingrédients s'additionnent ici, et le site vous propose des recettes qui réutilisent les mêmes produits.",
+    "clear": "Tout retirer",
+    "cleared": "Liste de courses vidée.",
+    "share": "Partager ou enregistrer la liste",
+    "shareTitle": "Partager la liste",
+    "shareIntro": "Ajouter une fois à « reproduite » pour les recettes que vous allez cuisiner :",
+    "shareConfirm": "Partager",
+    "shareCancel": "Annuler",
+    "shared": "Liste partagée.",
+    "saved": "Liste enregistrée dans vos téléchargements.",
+    "export": {
+      "title": "Nos courses du {date}",
+      "recipes": "Recettes :",
+      "toBuy": "À acheter :",
+      "pantry": "À vérifier dans le placard :",
+      "done": "Déjà pris :",
+      "line": "- {name}",
+      "lineWithQuantity": "- {name} ({quantity})",
+      "fileName": "liste-de-courses-{date}.txt"
+    }
   },
   "units": {
     "minutes": "{count} min",
@@ -136,6 +181,9 @@
     "undo": "Annuler"
   },
   "common": {
-    "closeGlyph": "×"
+    "closeGlyph": "×",
+    "minusGlyph": "−",
+    "plusGlyph": "+",
+    "separator": "·"
   }
 }

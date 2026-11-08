@@ -1,7 +1,9 @@
 <template>
   <div class="NotePanel mt-4 mb-7 grid gap-2.5 rounded-card bg-chip p-3.5">
+    <RatingStars :recipe="recipe" />
+    <CookedCounter :recipe-id="recipe.id" />
     <label
-      class="Label"
+      class="Label mt-2"
       :for="fieldId">{{ t("note.label") }}</label>
     <textarea
       :id="fieldId"
@@ -26,19 +28,24 @@
 import { computed, onBeforeUnmount, ref, watch } from "vue";
 import { useI18n } from "vue-i18n";
 import { useDebounceFn } from "@vueuse/core";
+import RatingStars from "@/components/ui/RatingStars.vue";
+import CookedCounter from "@/components/ui/CookedCounter.vue";
 import { useNotes } from "@/composables/useNotes";
+import type { Recipe } from "@/engine/recipe.schema";
 
-// Saved after a pause in typing, on blur, and when leaving the recipe.
+// "Notre avis": note perso, "reproduite" counter, and the comment.
+// The comment is saved after a pause in typing, on blur, and when leaving the recipe.
 const SAVE_DELAY_MS = 800;
 
-const props = defineProps<{ recipeId: string }>();
+const props = defineProps<{ recipe: Recipe }>();
 const emit = defineEmits<{ hide: [] }>();
 
 const { t } = useI18n();
 const { noteOf, saveNote, isShared } = useNotes();
 
-const fieldId = computed(() => `note-${props.recipeId}`);
-const savedComment = computed(() => noteOf(props.recipeId).comment ?? "");
+const recipeId = computed(() => props.recipe.id);
+const fieldId = computed(() => `note-${recipeId.value}`);
+const savedComment = computed(() => noteOf(recipeId.value).comment ?? "");
 const draft = ref(savedComment.value);
 const isEditing = ref(false);
 
@@ -55,7 +62,7 @@ watch(draft, () => {
 
 function save(): void {
   const comment = draft.value.trim();
-  if (comment !== savedComment.value) saveNote(props.recipeId, { comment });
+  if (comment !== savedComment.value) saveNote(recipeId.value, { comment });
 }
 
 function onBlur(): void {

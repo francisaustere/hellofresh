@@ -12,9 +12,7 @@
       {{ t("cart.inCart") }}
     </span>
     <div class="grid flex-1 content-start gap-1.5 px-3.5 pt-3 pb-3.5">
-      <OrderLine
-        :stars="recipe.orders.stars"
-        :count="recipe.orders.count" />
+      <OrderLine :recipe="recipe" />
       <h3 class="text-lg leading-tight font-semibold">
         <HighlightText
           :text="recipe.name"
@@ -36,6 +34,7 @@
         class="RecipeCard__Note text-[13px] text-muted italic">{{ comment }}</div>
       <div class="flex flex-wrap gap-x-3 gap-y-1 text-[13px] text-muted tabular-nums">
         <span v-if="recipe.totalTime">{{ t("units.minutes", { count: recipe.totalTime }) }}</span>
+        <span>{{ t(seasonMessageKey(season)) }}</span>
         <span v-if="recipe.kcal">{{ t("units.kcal", { count: recipe.kcal }) }}</span>
         <span
           v-for="tag in recipe.tags.slice(0, MAX_TAGS)"
@@ -56,11 +55,12 @@ import { useAppActor } from "@/composables/useAppActor";
 import { useNotes } from "@/composables/useNotes";
 import { usePreferences } from "@/composables/usePreferences";
 import type { Recipe } from "@/engine/recipe.schema";
+import { seasonMessageKey, type Season } from "@/engine/season.utils";
 
 const MAX_MATCHES = 3;
 const MAX_TAGS = 2;
 
-const props = defineProps<{ recipe: Recipe, words: string[], matchedIngredients: string[] }>();
+const props = defineProps<{ recipe: Recipe, season: Season | null, words: string[], matchedIngredients: string[] }>();
 
 const { t } = useI18n();
 const app = useAppActor();

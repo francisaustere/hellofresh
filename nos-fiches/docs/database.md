@@ -11,7 +11,7 @@ Moving later loses nothing: the localStorage notes of that browser can be import
 | Data | Where today | Where it should live | Why |
 |---|---|---|---|
 | Recipes, photos, heart badges | `public/data.json`, `public/img/` (static, rebuilt by `../scripts/build-parents.mjs`) | Stay static | Read-only, regenerated in batch, 44 MB of sprites. A CDN serves it better than a database. |
-| Notes per recipe: `comment`, `hidden` (and legacy `rating`) | `localStorage["notes"]` | **Shared database** | The parents write a note on the computer and read it on the phone in the kitchen. The artifact version already behaved this way. |
+| Notes per recipe: `comment`, `hidden`, `rating` (personal stars), `cooked` (times cooked at home) | `localStorage["notes"]` | **Shared database** | The parents write a note on the computer and read it on the phone in the kitchen. The artifact version already behaved this way. |
 | Basket, ticked shopping lines, servings | `localStorage` (`cart`, `checked`, `servings`) | Stay per device | Same as the artifact. Optional later: share the basket too (one more table, same pattern). |
 
 The contract is `src/core/notes/NotesRepository.ts`: `subscribe(onChange, onError)` pushes the full map now and on every change, `save(recipeId, note)` replaces one note. `useNotes` handles optimistic updates and one write at a time per recipe, so a backend only has to implement those two methods.
@@ -41,8 +41,8 @@ Show a simple sign-in screen when there is no session (one email field, "Recevoi
 
 1. `npm i @supabase/supabase-js`.
 2. `src/core/notes/SupabaseNotesRepository.ts` implementing `NotesRepository`, `isShared = true`:
-   - `subscribe`: `select recipe_id, comment, hidden, rating, updated_at` for the household, call `onChange(map)`, then `channel("recipe_notes").on("postgres_changes", { event: "*", schema: "public", table: "recipe_notes", filter: "household_id=eq.<id>" }, …)` and re-emit the merged map. Return a function that removes the channel.
-   - `save`: `upsert({ household_id, recipe_id, comment, hidden, rating, updated_at }, { onConflict: "household_id,recipe_id" })`; throw on error so `useNotes` shows its toast.
+   - `subscribe`: `select recipe_id, comment, hidden, rating, cooked, updated_at` for the household, call `onChange(map)`, then `channel("recipe_notes").on("postgres_changes", { event: "*", schema: "public", table: "recipe_notes", filter: "household_id=eq.<id>" }, …)` and re-emit the merged map. Return a function that removes the channel.
+   - `save`: `upsert({ household_id, recipe_id, comment, hidden, rating, cooked, updated_at }, { onConflict: "household_id,recipe_id" })`; throw on error so `useNotes` shows its toast.
    - Map `updated_at` ↔ `updatedAt` (camelCase in the app, snake_case in SQL).
    - Validate rows with `RecipeNoteSchema` (zod) like the local repository does.
 3. Household id: read it once after sign-in from `household_members` (`select household_id … limit 1`).

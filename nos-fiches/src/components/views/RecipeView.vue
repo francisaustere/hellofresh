@@ -15,9 +15,7 @@
       <div class="grid min-w-0 gap-4">
         <div>
           <div class="mb-1.5">
-            <OrderLine
-              :stars="recipe.orders.stars"
-              :count="recipe.orders.count" />
+            <OrderLine :recipe="recipe" />
           </div>
           <h1 class="text-[clamp(28px,4vw,44px)] leading-[1.05] font-extrabold">{{ recipe.name }}</h1>
           <div class="mt-1.5 text-lg text-muted">{{ recipe.headline }}</div>
@@ -62,7 +60,7 @@
 
     <NotePanel
       :key="recipe.id"
-      :recipe-id="recipe.id"
+      :recipe="recipe"
       @hide="hideRecipe" />
 
     <div class="RecipeView__Columns grid items-start gap-8">
@@ -91,6 +89,7 @@ import { useNotes } from "@/composables/useNotes";
 import { usePreferences } from "@/composables/usePreferences";
 import { useToast } from "@/composables/useToast";
 import type { Recipe } from "@/engine/recipe.schema";
+import { seasonMessageKey } from "@/engine/season.utils";
 
 const RELATED_LIMIT = 6;
 
@@ -108,6 +107,8 @@ const facts = computed(() => {
   const list: { value: string, label: string }[] = [];
   if (totalTime) list.push({ value: t("units.minutes", { count: totalTime }), label: t("recipe.fact.total") });
   if (prepTime) list.push({ value: t("units.minutes", { count: prepTime }), label: t("recipe.fact.prep") });
+  const season = catalog.value.seasonOf(props.recipe);
+  list.push({ value: t(seasonMessageKey(season)), label: t("season.label") });
   if (difficulty) list.push({ value: t(`recipe.difficulty.${difficulty}`), label: t("recipe.fact.difficulty") });
   if (kcal) list.push({ value: String(kcal), label: t("recipe.fact.kcal") });
   return list;
